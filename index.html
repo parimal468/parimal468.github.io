@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FFCC00">
+    <meta property="og:title" content="ENTHUSIAC: Mumbai The Hustler City">
+    <meta property="og:description" content="Join us on Feb 7 & 8, 2026 at DES's JS KOTHARI BUSINESS SCHOOL. The Hustle Begins!">
+    <title>Enthusiac: Mumbai The Hustler City</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Teko:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mumbai-yellow: #FFCC00; /* Taxi Yellow */
+            --mumbai-black: #fff7f7;
+            --mumbai-grey: #2d2d2d;
+            --asphalt: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Teko', sans-serif;
+            background-color: var(--asphalt);
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23222222' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            color: white;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            position: relative; /* ensure ::before sits behind page content */
+            z-index: 0;
+        }
+
+        /* Full-page background image layer (replace the URL with your own image)
+           - Uses a fixed, cover image behind the content
+           - Slightly darkened for readability */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0; /* top:0; right:0; bottom:0; left:0 */
+            background-image: url('https://images.unsplash.com/photo-1532633130319-f16ab0a3a9c4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fG11bWJhaXxlbnwwfHwwfHx8MA%3D%3D');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            opacity: 100; /* adjust between 0 (invisible) and 1 (opaque) to taste */
+            filter: brightness(0.45) saturate(0.9);
+            z-index: -1; /* ensure it's behind all content */
+            pointer-events: none; /* allow clicks through the background */
+        }
+        
+        .font-bombay {
+            font-family: 'Anton', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* The Taxi Strip Pattern */
+        .taxi-strip {
+            height: 20px;
+            width: 100%;
+            background-image: linear-gradient(90deg, var(--mumbai-black) 50%, var(--mumbai-yellow) 50%);
+            background-size: 40px 100%;
+        }
+
+        /* Neon Glow Text & Animation */
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
+            animation: flicker 3s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow:
+                    0 0 4px #fff,
+                    0 0 11px #fff,
+                    0 0 19px #fff,
+                    0 0 40px var(--mumbai-yellow),
+                    0 0 80px var(--mumbai-yellow),
+                    0 0 90px var(--mumbai-yellow),
+                    0 0 100px var(--mumbai-yellow),
+                    0 0 150px var(--mumbai-yellow);
+            }
+            20%, 24%, 55% {       
+                text-shadow: none;
+            }
+        }
+
+        /* Sticker Effect for Cards */
+        .sticker-card {
+            background: var(--mumbai-grey);
+            border: 1px solid #444;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+        
+        .sticker-card:hover {
+            transform: translateY(-5px) rotate(-1deg);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            border-color: var(--mumbai-yellow);
+            z-index: 10;
+        }
+
+        /* Diagonal "Stamp" */
+        .stamp {
+            position: absolute;
+            top: 10px;
+            right: -10px;
+            background: var(--mumbai-yellow);
+            color: var(--mumbai-black);
+            padding: 2px 10px;
+            font-weight: bold;
+            transform: rotate(15deg);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            font-family: 'Anton', sans-serif;
+        }
+
+        /* Marquee Animation */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Floating Buttons CSS */
+        .floating-container {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+            align-items: flex-end;
+        }
+
+        .float-btn {
+            padding: 10px 24px;
+            font-weight: bold;
+            font-size: 1.4rem;
+            box-shadow: 6px 6px 0px rgba(0,0,0,0.8);
+            transition: all 0.2s;
+            cursor: pointer;
+            text-align: center;
+            font-family: 'Teko', sans-serif;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 180px;
+        }
+        
+        .float-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0px rgba(0,0,0,1);
+        }
+
+        .float-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px rgba(0,0,0,1);
+        }
+
+        .btn-register {
+            background-color: var(--mumbai-yellow);
+            color: black;
+            border: 3px solid black;
+        }
+
+        .btn-share {
+            background-color: white;
+            color: black;
+            border: 3px solid black;
+        }
+
+        .countdown-box {
+            background: black;
+            border: 1px solid var(--mumbai-yellow);
+            padding: 5px 10px;
+            min-width: 60px;
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        [contenteditable]:focus {
+            outline: 2px dashed var(--mumbai-yellow);
+            background: rgba(0,0,0,0.4);
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-32" spellcheck="false">
+
+    <!-- Header Strip -->
+    <div contenteditable="true" class="bg-yellow-500 text-black py-1 text-center font-bold tracking-widest uppercase text-sm sticky top-0 z-50 shadow-md">
+        DES's JS KOTHARI BUSINESS SCHOOL Presents
+    </div>
+    <div class="taxi-strip"></div>
+
+    <!-- Ticker Tape -->
+    <div class="bg-black border-b-2 border-yellow-500 py-1 overflow-hidden marquee-container">
+        <div contenteditable="true" class="marquee-content text-yellow-500 font-bold text-xl uppercase tracking-widest">
+            /// BREAKING NEWS: REGISTRATIONS OPEN NOW /// MUMBAI'S LOUDEST FEST IS HERE /// REGISTER EARLY TO SECURE YOUR SEAT ///
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div contenteditable="true" class="container mx-auto px-4 text-center mb-8 mt-8">
+        <h1 class="font-bombay text-6xl md:text-9xl text-white mb-0 leading-none neon-glow">
+            ENTHUSIAC
+        </h1>
+        <div class="inline-block bg-yellow-500 text-black px-6 py-2 transform -skew-x-12 mt-2 mb-6 shadow-lg shadow-yellow-500/20">
+            <h2 class="font-bombay text-2xl md:text-5xl m-0 leading-none">MUMBAI: THE HUSTLER CITY</h2>
+        </div>
+        
+        <p class="text-xl md:text-2xl text-gray-400 tracking-wide font-light mb-8">"Where Enthusiasm Meets Excellence"</p>
+
+        <!-- Countdown Timer -->
+        <div class="max-w-2xl mx-auto mb-10 bg-zinc-900/80 p-6 border-t-2 border-b-2 border-yellow-500 rounded-lg backdrop-blur-sm">
+            <p class="text-yellow-500 uppercase tracking-[0.2em] mb-4 font-bold text-sm">The Hustle Begins In</p>
+            <div id="countdown" class="flex justify-center gap-4 text-center">
+                <div>
+                    <div class="countdown-box text-3xl md:text-5xl font-bombay text-white" id="days">00</div>
+                    <div class="text-xs text-gray-400 mt-1 uppercase">Days</div>
+                </div>
+                <div class="text-2xl text-yellow-500 pt-2">:</div>
+                <div>
+                    <div class="countdown-box text-3xl md:text-5xl font-bombay text-white" id="hours">00</div>
+                    <div class="text-xs text-gray-400 mt-1 uppercase">Hours</div>
+                </div>
+                <div class="text-2xl text-yellow-500 pt-2">:</div>
+                <div>
+                    <div class="countdown-box text-3xl md:text-5xl font-bombay text-white" id="minutes">00</div>
+                    <div class="text-xs text-gray-400 mt-1 uppercase">Mins</div>
+                </div>
+            </div>
+            
+            <!-- Add to Calendar Button (Not Editable to preserve link functionality) -->
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=ENTHUSIAC+MUMBAI&dates=20260207T080000/20260208T180000&details=Enthusiac:+Mumbai+The+Hustler+City.+Event+at+JS+Kothari+Business+School.&location=DES's+JS+KOTHARI+BUSINESS+SCHOOL,+Dadar+West,+Mumbai" target="_blank" class="inline-block mt-4 text-xs text-gray-400 hover:text-white border border-gray-600 px-3 py-1 rounded hover:border-white transition-colors" contenteditable="false">
+                <i class="far fa-calendar-plus mr-1"></i> Add to Google Calendar
+            </a>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-center gap-6 max-w-4xl mx-auto">
+            <div class="bg-zinc-800 border-l-4 border-yellow-500 p-4 flex-1 text-left relative overflow-hidden group rounded-r">
+                <div class="absolute right-0 top-0 text-6xl text-white opacity-5"><i class="far fa-calendar-alt"></i></div>
+                <p class="text-yellow-500 text-sm uppercase tracking-widest mb-1">When</p>
+                <p class="text-3xl font-bold">FEBRUARY 6 & 7, 2026</p>
+                <p class="text-gray-400">8:00 AM Onwards</p>
+            </div>
+            <!-- Wrapped in a div instead of A tag for editability, added onclick for link behavior -->
+            <div onclick="window.open('https://maps.google.com/?q=JS+Kothari+Business+School+Dadar', '_blank')" class="bg-zinc-800 border-l-4 border-yellow-500 p-4 flex-1 text-left hover:bg-zinc-700 transition-colors relative overflow-hidden group cursor-pointer block rounded-r">
+                <div class="absolute right-0 top-0 text-6xl text-white opacity-5"><i class="fas fa-map-marker-alt"></i></div>
+                <p class="text-yellow-500 text-sm uppercase tracking-widest mb-1">Where <span class="text-xs bg-yellow-500 text-black px-1 ml-2 rounded">GET DIRECTIONS</span></p>
+                <p class="text-3xl font-bold text-white">DADAR WEST</p>
+                <p class="text-gray-400">DES's JS KOTHARI BUSINESS SCHOOL</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Grid -->
+    <div contenteditable="true" class="container mx-auto px-4 max-w-6xl">
+        
+        <!-- About Section -->
+        <div class="grid md:grid-cols-2 gap-8 mb-12 border-t border-b border-gray-700 py-8">
+            <div>
+                <h3 class="font-bombay text-3xl text-yellow-500 mb-2">The Legacy</h3>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Rooted in the 139-year history of the <strong>Deccan Education Society (DES)</strong>, we carry the torch of patriotic visionaries. <strong>DES's JS KOTHARI BUSINESS SCHOOL</strong> blends this heritage with modern hustle to forge India's future leaders.
+                </p>
+            </div>
+            <div class="flex flex-col justify-center items-center md:items-end">
+                <div class="text-center">
+                    <p class="text-yellow-500 font-bold mb-2">SCAN TO REGISTER</p>
+                    <div class="bg-white p-2 w-48 text-center rotate-2 shadow-lg sticker-card mx-auto">
+                        <img src="C:\Users\spari\Downloads\WhatsApp Image 2026-01-14 at 1.05.35 PM.jpeg" alt="QR Code" class="w-full mb-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events Section -->
+        <div class="mb-4 flex items-center gap-4">
+            <span class="bg-yellow-500 text-black font-bold px-3 py-1">EVENT LINEUP</span>
+            <div class="h-px bg-gray-700 flex-grow"></div>
+        </div>
+
+        <!-- Event Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+            
+            <!-- Day 1 Header -->
+            <div class="col-span-full mb-2 mt-4">
+                <h3 class="text-2xl font-bold text-gray-400 uppercase">/// Day 1: The Grind</h3>
+            </div>
+
+            <!-- Cricket -->
+            <div class="sticker-card p-4 rounded">
+                <div class="stamp">₹800</div>
+                <i class="fas fa-baseball-bat-ball text-4xl text-yellow-500 mb-2"></i>
+                <h4 class="text-2xl font-bold text-white leading-none">CRICKET
+</h4>
+                <p class="text-sm text-gray-400 mt-1 uppercase">Gully to Glory - Cricket Hustle League</p>
+            </div>
+
+            <!-- BGMI -->
+            <div class="sticker-card p-4 rounded">
+                <div class="stamp">₹300</div>
+                <i class="fas fa-gamepad text-4xl text-yellow-500 mb-2"></i>
+                <h4 class="text-2xl font-bold text-white leading-none">BGMI</h4>
+                <p class="text-sm text-gray-400 mt-1 uppercase">Last Squad Standing-Mumbai Battlegrounds
+</p>
+            </div>
+
+            <!-- Tug of War -->
+            <div class="sticker-card p-4 rounded">
+                <div class="stamp">₹300</div>
+                <i class="fas fa-users text-4xl text-yellow-500 mb-2"></i>
+                <h4 class="text-2xl font-bold text-white leading-none">TUG OF WAR</h4>
+                <p class="text-sm text-gray-400 mt-1 uppercase">Power Pull-Spirit of Mumbai
+</p>
+            </div>
+
+            <!-- Business Pitch -->
+            <div class="sticker-card p-4 rounded">
+                <div class="stamp">₹300</div>
+                <i class="fas fa-briefcase text-4xl text-yellow-500 mb-2"></i>
+                <h4 class="text-2xl font-bold text-white leading-none">BUSINESS PITCH</h4>
+                <p class="text-sm text-gray-400 mt-1 uppercase">Pitch in the City-Mumbai Startup Stage</p>
+            </div>
+
+            <!-- Marketing Auction -->
+            <div class="sticker-card p-4 rounded">
+                <div class="stamp">₹150</div>
+                <i class="fas fa-bullhorn text-4xl text-yellow-500 mb-2"></i>
+                <h4 class="text-2xl font-bold text-white leading-none">IPL Auction</h4>
+                <p class="text-sm text-gray-400 mt-1 uppercase">Bid & Build-Mumbai Franchise Auction</p>
+            </div>
+
+            <!-- Triple Threat -->
+            <div class="sticker-card p-4 rounded">
+                <div class="stamp">₹60</div>
+                <i class="fas fa-crown text-4xl text-yellow-500 mb-2"></i>
+                <h4 class="text-2xl font-bold text-white leading-none">MR. & MS. ENTHUSIAC</h4>
+                <p class="text-sm text-gray-400 mt-1 uppercase">Face of the City-Mr. & Miss Mumbai Hustle</p>
+            </div>
+
+             <!-- Carrom -->
+             <div class="sticker-card p-4 rounded">
+                <div class="stamp">₹100</div>
+                <i class="fas fa-bullseye text-4xl text-yellow-500 mb-2"></i>
+                <h4 class="text-2xl font-bold text-white leading-none">CARROM</h4>
+                <p class="text-sm text-gray-400 mt-1 uppercase">Street Precision-The Carrom Clash</p>
+            </div>
+
+
+             <!-- Day 2 Header -->
+             <div class="col-span-full mb-2 mt-6">
+                <h3 class="text-2xl font-bold text-gray-400 uppercase">/// Day 2: The Glory</h3>
+            </div>
+
+            
+             <!-- Chess -->
+             <div class="sticker-card p-4 rounded">
+                <div class="stamp">₹70</div>
+                <i class="fas fa-chess-king text-4xl text-yellow-500 mb-2"></i>
+                <h4 class="text-2xl font-bold text-white leading-none">CHESS</h4>
+                <p class="text-sm text-gray-400 mt-1 uppercase">Mind Over Move-Mumbai Checkmate</p>
+            </div>
+            
+            <!-- Brand to Re-Brand -->
+            <div class="sticker-card p-4 rounded">
+                <div class="stamp">₹300</div>
+                <span class="inline-block mb-2">
+                  <!-- Branding SVG Icon: Tag with Sparkle -->
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="8" y="14" width="40" height="20" rx="3" fill="#FFCC00" stroke="#222" stroke-width="2"/>
+                    <circle cx="13" cy="20" r="2" fill="#fff" stroke="#222" stroke-width="1.2"/>
+                    <path d="M28 10 l2 -2 m-2 2 l2 2 m-2 -2 l-2 2 m2 -2 l-2 -2" stroke="#FFCC00" stroke-width="1.5"/>
+                  </svg>
+                </span>
+                <h4 class="text-2xl font-bold text-white leading-none">BRAND TO RE-BRAND</h4>
+                <p class="text-sm text-gray-400 mt-1 uppercase">Rebranding the Hustle</p>
+            </div>
+
+            <!-- MUMBAI GOT TALENT -->
+             <div class="sticker-card p-4 rounded">
+                <div class="stamp">₹150</div>
+                <span class="inline-block mb-2">
+                  <!-- Talent Hunt SVG Icon: Star with Microphone -->
+                  <svg width="50" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="20,6 24,16 35,16 26,23 29,34 20,27 11,34 14,23 5,16 16,16" fill="#FFCC00" stroke="#222" stroke-width="2"/>
+                    <rect x="18" y="22" width="4" height="10" rx="2" fill="#fff" stroke="#222" stroke-width="1.2"/>
+                    <circle cx="20" cy="22" r="3" fill="#b5651d" stroke="#222" stroke-width="1.2"/>
+                  </svg>
+                </span>
+                <h4 class="text-2xl font-bold text-white leading-none">MUMBAI GOT TALENT</h4>
+                <p class="text-sm text-gray-400 mt-1 uppercase">Spotlight Se Sapna-Mumbai Got Talent</p>
+            </div>
+
+            <!-- Treasure Hunt -->
+             <div class="sticker-card p-4 rounded">
+                <div class="stamp">₹200</div>
+                <span class="inline-block mb-2">
+                  <!-- Treasure Hunt SVG Icon: Chest with Sparkles -->
+                  <svg width="44" height="40" viewBox="0 0 44 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="8" y="18" width="28" height="14" rx="3" fill="#FFCC00" stroke="#222" stroke-width="2"/>
+                    <rect x="10" y="12" width="24" height="8" rx="2" fill="#fff" stroke="#222" stroke-width="1.5"/>
+                    <circle cx="22" cy="25" r="2" fill="#b5651d" stroke="#222" stroke-width="1.2"/>
+                    <path d="M34 10 l2 -2 m-2 2 l2 2 m-2 -2 l-2 2 m2 -2 l-2 -2" stroke="#FFCC00" stroke-width="1.2"/>
+                  </svg>
+                </span>
+                <h4 class="text-2xl font-bold text-white leading-none">TREASURE HUNT</h4>
+                <p class="text-sm text-gray-400 mt-1 uppercase">Treasure Hunt-The Hustler's Trail</p>
+            </div>
+
+            <!-- Triple Hustle -->
+             <div class="sticker-card p-4 rounded">
+                <div class="stamp">₹100</div>
+                <span class="inline-block mb-2">
+                  <!-- Puzzle SVG Icon -->
+                  <svg width="60" height="60" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 18v-4a4 4 0 0 1 4-4h4a2 2 0 1 0 4 0h4a4 4 0 0 1 4 4v4a2 2 0 1 0 0 4v4a4 4 0 0 1-4 4h-4a2 2 0 1 0-4 0h-4a4 4 0 0 1-4-4v-4a2 2 0 1 0 0-4z" fill="#FFCC00" stroke="#222" stroke-width="2"/>
+                    <circle cx="20" cy="20" r="2.2" fill="#fff" stroke="#222" stroke-width="1.2"/>
+                  </svg>
+                </span>
+                <h4 class="text-2xl font-bold text-white leading-none">TRIPLE HUSTLE</h4>
+                <p class="text-sm text-gray-400 mt-1 uppercase">Triple Hustle-The Ultimate Mumbai Challenge</p>
+            </div>
+            
+
+        </div>
+
+        <!-- NEW: FAQ Section -->
+        <div class="mb-16">
+             <div class="mb-6 flex items-center gap-4">
+                <span class="bg-yellow-500 text-black font-bold px-3 py-1">HUSTLER'S GUIDE (FAQ)</span>
+                <div class="h-px bg-gray-700 flex-grow"></div>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-zinc-800 p-4 border-l-4 border-yellow-500">
+                    <h5 class="text-yellow-500 font-bold mb-1">IS REGISTRATION ON THE SPOT?</h5>
+                    <p class="text-gray-300 text-sm">Yes, but online registration guarantees your slot. Spots fill up fast!</p>
+                </div>
+                <div class="bg-zinc-800 p-4 border-l-4 border-yellow-500">
+                    <h5 class="text-yellow-500 font-bold mb-1">CAN OUTSIDERS PARTICIPATE?</h5>
+                    <p class="text-gray-300 text-sm">Absolutely! This is an intercollegiate fest open to all hustlers with a valid ID.</p>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Footer Contact -->
+        <div class="bg-yellow-500 text-black p-8 md:p-12 text-center md:text-left relative rounded-t-lg">
+            <div class="absolute top-0 left-0 w-full h-2 bg-black opacity-20 taxi-strip"></div>
+            
+            <div class="grid md:grid-cols-3 gap-8 pt-4">
+                <div>
+                    <h4 class="font-bombay text-3xl mb-4">GET IN TOUCH</h4>
+                    <p class="font-bold text-lg">Enthusiac2026@gmail.com</p>
+                    <p class="font-bold text-lg">IG: jskbs_events</p>
+                </div>
+
+                <div>
+                    <p class="text-sm uppercase font-bold tracking-widest mb-2 opacity-60">Contingent Leader</p>
+                    <div class="space-y-1 font-bold">
+                        <p>Devroop Sen: 9167949814</p>
+                        <p>Yashika Dahiya: 8168268918</p>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="text-sm uppercase font-bold tracking-widest mb-2 opacity-60">Admin</p>
+                    <div class="grid grid-cols-2 gap-2 text-sm font-bold">
+                        <p>Amisha: 7888270747</p>
+                        <p>Chinmay: 8421483199</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Floating Action Buttons (Editable) -->
+    <div class="floating-container" data-html2canvas-ignore>
+        <div onclick="window.open('https://forms.gle/LJUUzAmpvMbFJxVA6', '_blank')" class="float-btn btn-register">
+            <span contenteditable="true" onclick="event.stopPropagation()">REGISTER NOW</span> <i class="fas fa-arrow-right"></i>
+        </div>
+        <div onclick="sharePage()" class="float-btn btn-share">
+            <i class="fas fa-share-alt"></i> <span contenteditable="true" onclick="event.stopPropagation()">SHARE</span>
+        </div>
+    </div>
+
+    <script>
+        // Countdown Logic
+        const eventDate = new Date('February 7, 2026 08:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Share Logic
+        async function sharePage() {
+            const shareData = {
+                title: "ENTHUSIAC: Mumbai The Hustler's City",
+                text: 'Join us on Feb 7 & 8, 2026 for the biggest fest at DES JS Kothari Business School!',
+                url: window.location.href
+            }
+
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.log('Error sharing:', err);
+                }
+            } else {
+                // Fallback for desktop or unsupported browsers
+                alert("Copy this link to share: " + window.location.href);
+            }
+        }
+    </script>
+</body>
+</html>
